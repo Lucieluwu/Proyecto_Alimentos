@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos de persona</title>
+    <style>
+        @font-face {
+            font-family: 'Inter';
+            src: url('../static/font/fonts/Inter-Regular.ttf');
+        }
+
+        @font-face {
+            font-family: 'Newsreader_14pt-Light';
+            src: url('../static/font/fonts/Newsreader_14pt-Medium.ttf');
+        }
+
+
+        h1 {
+            font-family: 'Newsreader_14pt-Light', serif; /* Establecer Newsreader_14pt-Medium para h1 */
+            font-size: 35px;
+            color: #1A871F;
+            text-align: center;
+            margin-top: 2%; /* Ajusta el espacio entre h1 y h3 */
+            margin-bottom: 1%;
+        }
+
+        body
+        {
+            background-color: #ffffff;
+        }
+
+        body, button, input, label, p, select {
+            font-family: 'Inter', sans-serif; /* Establecer Inter para todos los textos */
+        }
+
+        .container {
+            width: 55%; /* Ajustar según sea necesario */
+            margin: 0 auto; /* Centrar el contenedor */
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 50px;
+        }
+        input, select 
+        {
+            margin-top: 5px;
+            width: 90%;
+            border-color: #ffffff;
+            border-radius: 5px;
+        }
+
+        select
+        {
+            width: 94%;
+            border-color: #c5c5c5;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Centrar las columnas horizontalmente */
+        }
+        .column {
+            border: 1px solid #e0e0e0;
+            width: calc(45% - 10px); /* Ajustar el ancho de las columnas */
+            margin-bottom: 20px;
+            text-align: left;
+            background-color: #F2F2F2; 
+            padding: 15px;
+            border-radius: 20px;
+            position: relative;
+        }
+        .column:nth-child(odd) {
+            margin-right: 20px; /* Espacio entre las columnas */
+        }
+        .column label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .gender-group {
+            display: flex;
+            align-items: center;
+        }
+        .gender-label {
+            margin-right: 20px; /* Espacio entre el radio button y el texto */
+        }
+        .gender-input {
+            margin-right: 15px; /* Espacio entre los radio buttons */
+            margin-top: -7px;
+        }
+        p {
+            font-family: 'Newsreader_14pt-Light', serif; /* Establecer Newsreader_14pt-Medium para h1 */
+            font-size: 25px; /* Ajusta según sea necesario */
+            margin-left: 30px; 
+            margin-bottom: 1px;
+        }
+        button {
+            background-color: #426B1F;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 10px; /* Ajustado para acercar el botón al contenedor */
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+        <h1>Ingrese sus Datos Personales</h1>
+        <p> Llenar todos los campos </p>
+        <hr>
+        <div class="container">
+        <form action="guardar_persona" method="post">
+            <div class="row">
+                <div class="column">
+                    <label for="ci">Carnet</label>
+                    <input type="number" name="ci" id="ci">
+                </div>
+                <div class="column">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre">
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <label for="apaterno">Apellido Paterno</label>
+                    <input type="text" id="apaterno" name="apepaterno">
+                </div>
+                <div class="column">
+                    <label for="amaterno">Apellido Materno</label>
+                    <input type="text" id="amaterno" name="apematerno">
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <label for="celular">Celular</label>
+                    <input type="number" id="celular" name="cel">
+                </div>
+                <div class="column">
+                    <label for="fecha">Nacimiento</label>
+                    <input type="date" id="fecha" name="naci">
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <label for="direccion">Departamento</label>
+                    <select id="direccion" name="direccion">
+                        <option disabled selected>Seleccione su departamento</option>
+                        <option value="Beni">Beni</option>
+                        <option value="Cochabamba">Cochabamba</option>
+                        <option value="La Paz">La Paz</option>
+                        <option value="Oruro">Oruro</option>
+                        <option value="Pando">Pando</option>
+                        <option value="Potosí">Potosí</option>
+                        <option value="Santa Cruz">Santa Cruz</option>
+                        <option value="Sucre">Sucre</option>
+                        <option value="Tarija">Tarija</option>
+                    </select>
+                </div>
+                <div class="column">
+                    <label>Sexo</label>
+                    <div class="gender-group">
+                        <input type="radio" name="sexo" id="F" value="F" class="gender-input">
+                        <label class="gender-label" for="F">Femenino</label>
+                        <input type="radio" name="sexo" id="M" value="M" class="gender-input">
+                        <label class="gender-label" for="M">Masculino</label>
+                    </div>
+                </div>
+            </div>
+            <div class="button-container">
+                <button type="submit">Enviar</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

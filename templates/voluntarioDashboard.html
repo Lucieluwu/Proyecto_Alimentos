@@ -1,0 +1,61 @@
+{% extends 'dashboard_don.html' %}
+
+{% block content %}
+<div class="main-body">
+    <h1 style="margin-left: 45%;">Tareas Voluntario</h1>
+</div>
+<section id="content">
+    <!-- MAIN -->
+    <main>
+        <ul class="box-info">
+            <li>
+                <i class='bx bx-calendar-check'></i>
+                <span class="text">
+                    <h3>200</h3>
+                    <p>COMPLETADAS</p>
+                </span>
+            </li>
+            <li>
+                <i class='bx bx-briefcase-alt-2'></i>
+                <span class="text">
+                    <h3>834</h3>
+                    <p>PENDIENTES</p>
+                </span>
+            </li>
+            <li>
+                <i class='bx bx-dumbbell'></i>
+                <span class="text">
+                    <h3>543</h3>
+                    <p>SOLICITADAS</p>
+                </span>
+            </li>
+        </ul>
+
+
+        <div class="table-data">
+            <div class="todo">
+                <div class="head">
+                    <h3>Tareas</h3>
+                    <i class='bx bx-plus' ></i>
+                    <i class='bx bx-filter' ></i>
+                </div>
+                <ul class="todo-list">
+                    {% for tarea in tareas %}
+                    <li class="completed">
+                            <p onclick=window.location.href="{{url_for('ubicacion')}}" style="cursor: pointer;">{{ tarea[1] }}</p>
+                            <p><strong>{{ tarea[3] }}</strong></p>
+                            <p>Fecha limite: {{ tarea[5] }}</p>
+                        <button type="button" id="btnAsignar" class="btn btn-primary newUser" data-idact="{{ tarea[0] }}">HECHA</button>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </main>
+    <!-- MAIN -->
+</section>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="{{ url_for('static', filename='javascript/voluntarioTarea.js') }}"></script>
+{% endblock %}

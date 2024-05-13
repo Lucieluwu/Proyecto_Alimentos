@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css"">
+    <title>Organizaciones registradas</title>
+</head>
+<body>
+    <section class="section">
+        <div class="columns">
+            <div class="column">
+                <h3 class="is-size-3">Personas Registradas</h3>
+                <a href="#" class="button is-success">Agregar</a>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Departamento</th>
+                            <th>Ubicacion</th>
+                            <th>Tipo</th>
+                    </thead>
+                    <tbody>
+                        {% for org in orgs %}
+                        <tr>
+                            <td>{{org[1]}}</td>
+                            <td>{{org[3]}}</td>
+                            <td>{{org[2]}}</td>
+                            <td>{{org[4]}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

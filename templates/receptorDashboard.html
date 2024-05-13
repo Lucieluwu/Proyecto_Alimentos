@@ -1,0 +1,52 @@
+{% extends 'dashboard_don.html' %}
+
+{% block content %}
+<div class="main-body">
+    <h1 style="margin-left: 30%;">Gestiona tus Solicitudes y Recepciones</h1>
+</div>
+<section id="content">
+    <!-- MAIN -->
+    <main>
+        <div class="row">
+            <div class="col-12">
+                <a href="{{ url_for('solicitud') }}" class="btn btn-primary newUser">Nueva Solicitud <i class='bx bx-food-menu'></i></i></a>
+            </div>
+        </div>
+
+
+        <div class="table-data">
+            <div class="order">
+                <div class="head">
+                    <h3>Tus Solicitudes</h3>
+                    <i class='bx bx-search' ></i>
+                    <i class='bx bx-filter' ></i>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Fecha Solicitud</th>
+                            <th>Encargado</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for solicitud in solicitudes %}
+                        <tr onclick=window.location.href="{{url_for('contenido', id=solicitud[1])}}" style="cursor: pointer;">
+                            <td>
+                                <img src="../static/dashboard/36.png">
+                                {{ current_user.nom_user }}
+                            </td>
+                            <td>{{ solicitud[3] }}</td>
+                            <td>Por designar</td>
+                            <td><span class="status pending">{{ solicitud[5] }}</span></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    <!-- MAIN -->
+</section>
+{% endblock %}

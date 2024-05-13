@@ -1,0 +1,81 @@
+@font-face {
+    font-family: 'Inter';
+    src: url('../font/fonts/Inter-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Newsreader_14pt-Light';
+    src: url('../font/fonts/Newsreader_14pt-Medium.ttf');
+}
+
+body, .btn {
+    font-family: 'Inter', sans-serif;
+}
+
+.container {
+    margin: 10px auto; /* Reducir el margen superior del contenedor */
+    width: 30%;
+    text-align: center;
+    border: 2px solid #dadada;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #E6E6E6; /* Cambia el color de la caja aquí */
+    color: #000000; /* Color del texto dentro de la caja */
+}
+
+.bx {
+    font-size: 28px;
+    position: relative;
+    top: -43px;
+    left: 68%;
+    cursor: pointer;
+}
+
+.form-group {
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+}
+.form-group input {
+    width: calc(100% - 40px); /* Ajuste para dejar espacio al ícono */
+    padding: 12px;
+    padding-right: 40px; /* Espacio para el ícono */
+    border-radius: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+}
+.btn-primary {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #3c8363; /* Color de fondo del botón */
+    color: #ffffff; /* Color del texto del botón */
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.logo {
+    display: block;
+    margin: 20px auto 40px; /* 20px arriba y abajo, centrado horizontalmente */
+    max-width: 250px; /* Ancho máximo de la imagen */
+}
+a
+{
+    font-size: 14px;
+}
+h1
+{
+    font-family: 'Newsreader_14pt-Light', sans-serif; /* Establecer Newsreader_14pt-Medium para h1 */
+    font-size: 40px;
+    color: #9bcf80;
+    text-align: center;
+}

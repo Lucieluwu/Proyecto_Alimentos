@@ -1,0 +1,9 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    <h1>ADMINISTRACION LOGIN</h1>
+    <h2>Bienvenido {{current_user.id}}</h2>
+    <h3>{{current_user.nom_user}}</h3>
+    <h3>{{current_user.rol}}</h3>
+    <a href="{{ url_for('logout') }}">logout</a>
+{% endblock %}

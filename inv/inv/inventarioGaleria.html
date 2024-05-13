@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="inventarioEstilos.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> 
+
+    <title>INVENTARIO</title>
+</head>
+<body>
+
+    <!--HEADEEEEEEEEEER-->
+    <div class="container">
+        <header class="py-3 mb-4"> 
+            <div class="header-content d-flex flex-wrap justify-content-between align-items-center"> 
+                <div class="logo-container"> 
+                    <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none"> 
+                        <img src="img/logo.png" alt="Logo" style="height: 80px;"> <!-- Agrega la imagen aquí --> 
+                    </a> 
+                </div> 
+                <ul class="nav"> 
+                    <li class="nav-item"><a href="#" class="nav-link px-2">Inventario</a></li> 
+                    <li class="nav-item"><a href="#" class="nav-link px-2">Encuéntranos</a></li> 
+                    <li class="nav-item"><a href="#" class="nav-link px-2">Quiénes somos</a></li> 
+                    <li class="nav-item"><a href="#" class="nav-link px-2">Iniciar sesión</a></li> 
+                    <li class="nav-item"><a href="#" class="nav-link px-2">Registrarse</a></li> 
+                </ul> 
+                <div> 
+                    <button type="button" class="btn btn-primary">Donar ahora</button> 
+                </div> 
+            </div> 
+            <hr>
+        </header>
+    </div>
+        <!--HEADEEEEEEEEEER-->
+    
+    
+        <div class="contenedorOpciones" id="contenedorOpciones">
+            <ul class="clasificacion">
+                <li class="opciones"><a href="#lacteos">Lacteos</a></li>
+                <li class="opciones"><a href="#cereales">Cereales</a></li>
+                <li class="opciones"><a href="#embutidos">Embutidos</a></li>
+                <li class="opciones"><a href="#enlatados">Enlatados</a></li>
+                <li class="opciones"><a href="#congelados">Congelados</a></li>
+                <li class="opciones"><a href="#otros">Otros</a></li>
+            </ul>
+    
+        </div>
+    
+
+    <section class="contenido">
+            <div class="mostrador" id="mostrador">
+
+
+
+                <section id="lacteos">
+                    <div class="contenedor-imgCategoria">
+                        <img src="img/seccionLacteos4.png" alt="">
+                    </div>
+
+                    <!--           L  A   C   T   E   O   S     -->
+                <div class="fila">
+                    <div class="item" onclick="cargar(this)">
+                        <div class="contenedor-foto">
+                            <img src="img/lacteosLeche.png" alt="">
+                        </div>
+                        <p class="descripcion">LECHE</p>
+                        <span class="cantidad">en stock: 34</span>
+                    </div>
+                    <div class="item" onclick="cargar(this)">
+                        <div class="contenedor-foto">
+                            <img src="img/lacteosLecheDeslactosada.png" alt="">
+                        </div>
+                        <p class="descripcion" id>LECHE DESLACTOSADA</p>
+                        <span class="cantidad">en stock: 34</span>
+                    </div>
+                    <div class="item" onclick="cargar(this)">
+                        <div class="contenedor-foto">
+                            <img src="img/lacteosLechePolvo.png" alt="">
+                        </div>
+                        <p class="descripcion">LECHE EN POLVO
+                        </p>
+                        <span class="cantidad">en stock: 34</span>
+                    </div>
+                    <div class="item" onclick="cargar(this)">
+                        <div class="contenedor-foto">
+                            <img src="img/lacteosMargarina.png" alt="">
+                        </div>
+                        <p class="descripcion">MARGARINA</p>
+                        <span class="cantidad">en stock: 34</span>
+                    </div>
+                </div>
+                <div class="fila">
+                    <div class="item" onclick="cargar(this)">
+                        <div class="contenedor-foto">
+                            <img src="img/lacteosYogurt1.png" alt="">
+                        </div>
+                        <p class="descripcion">YOGURT BOTELLA</p>
+                        <span class="cantidad">en stock: 34<span>
+                    </div>
+                    <div class="item" onclick="cargar(this)">
+                        <div class="contenedor-foto">
+                            <img src="img/lacteosYogurt2.png" alt="">
+                        </div>
+                        <p class="descripcion">YOGURT</p>
+                        <span class="cantidad">en stock: 34</span>
+                    </div>
+                    <div class="item" onclick="cargar(this)">
+                        <div class="contenedor-foto">
+                            <img src="img/lacteosLecheCondensada.png" alt="">
+                        </div>
+                        <p class="descripcion">LECHE CONDENSADA</p>
+                        <span class="cantidad">en stock: 34</span>
+                    </div>
+                    <div class="item" onclick="cargar(this)">
+                        <div class="contenedor-foto">
+                            <img src="img/lacteosMantequilla.png" alt="">
+                        </div>
+                        <p class="descripcion">MANTEQUILLA</p>
+                        <span class="cantidad">en stock: 34</span>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
+               
+            <section id="cereales">
+                <div class="contenedor-imgCategoria">
+                    <img src="img/seccionCereales.png" alt="">
+                </div>
+                <!--    C   E   R   E   A   L   E   S      -->
+                <div class="fila">
+                    <div class="item" onclick="cargar(this)">
+                        <div class="contenedor-foto">
+                            <img src="img/cerealArroz.png" alt="">
+                        </div>
+                        <p class="descripcion">ARROZ</p>
+                        <span class="cantidad">en stock: 34</span>
+                    </div>
+                    <div class="item" onclick="cargar(this)">
+                        <div class="contenedor-foto">
+                            <img src="img/cerealAvena.png" alt="">
+                        </div>
+                        <p class="descripcion" id>AVENA</p>
+                        <span class="cantidad">en stock: 34</span>
+                    </div>
+                    <div class="item" onclick="cargar(this)">
+                        <div class="contenedor-foto">
+                            <img src="img/cerealCereal.png" alt="">
+                        </div>
+                        <p class="descripcion">CEREAL
+                        </p>
+                        <span class="cantidad">en stock: 34</span>
+                    </div>
+                    <div class="item" onclick="cargar(this)">
+                        <div class="contenedor-foto">
+                            <img src="img/cerealFideos.png" alt="">
+                        </div>
+                        <p class="descripcion">FIDEO</p>
+                        <span class="cantidad">en stock: 34</span>
+                    </div>
+                </div>
+                <div class="fila">
+                    <div class="item" onclick="cargar(this)">
+                        <div class="contenedor-foto">
+                            <img src="img/cerealGalletas.png" alt="">
+                        </div>
+                        <p class="descripcion">GALLETAS</p>
+                        <span class="cantidad">en stock: 34<span>
+                    </div>
+                    <div class="item" onclick="cargar(this)">
+                        <div class="contenedor-foto">
+                            <img src="img/cerealQuinua.png" alt="">
+                        </div>
+                        <p class="descripcion">QUINUA</p>
+                        <span class="cantidad">en stock: 34</span>
+                    </div>
+                    <div class="item" onclick="cargar(this)">
+                        <div class="contenedor-foto">
+                            <img src="img/cerealTallarin.png" alt="">
+                        </div>
+                        <p class="descripcion">TALLARIN</p>
+                        <span class="cantidad">en stock: 34</span>
+                    </div>
+                    <div class="item" onclick="cargar(this)">
+                        <div class="contenedor-foto">
+                            <img src="img/cerealTortillaMaiz.png" alt="">
+                        </div>
+                        <p class="descripcion">TORTILLA DE MAIZ</p>
+                        <span class="cantidad">en stock: 34</span>
+                    </div>
+                </div>
+
+            </section>
+              
+                
+          
+                    
+                
+                
+                
+            <section id="congelados">
+                <div class="contenedor-imgCategoria">
+                    <img src="img/seccionCongelados.png" alt="">
+                </div>
+                <!--    C   O   N   G   E   L   A   D   O   S       -->
+
+                <div class="fila">
+                    <div class="item" onclick="cargar(this)">
+                        <div class="contenedor-foto">
+                            <img src="img/congeladosVerdura.png" alt="">
+                        </div>
+                        <p class="descripcion">ENSALADA</p>
+                        <span class="cantidad">en stock: 34<span>
+                    </div>
+                    <div class="item" onclick="cargar(this)">
+                        <div class="contenedor-foto">
+                            <img src="img/congeladosNuggets.png" alt="">
+                        </div>
+                        <p class="descripcion">NUGGETS</p>
+                        <span class="cantidad">en stock: 34</span>
+                    </div>
+                    <div class="item" onclick="cargar(this)">
+                        <div class="contenedor-foto">
+                            <img src="img/congeladosChicharronCerdo.png" alt="">
+                        </div>
+                        <p class="descripcion">CHICHARRON DE CERDO</p>
+                        <span class="cantidad">en stock: 34</span>
+                    </div>
+                    <div class="item" onclick="cargar(this)">
+                        <div class="contenedor-foto">
+                            <img src="img/congeladosDedosPescado.png" alt="">
+                        </div>
+                        <p class="descripcion">DEDOS DE PESCADO</p>
+                        <span class="cantidad">en stock: 34</span>
+                    </div>
+                </div> 
+
+            </section>
+                
+                
+
+            </div>
+            <!-- CONTENEDOR DEL ITEM SELECCIONADO -->
+            <div class="seleccion" id="seleccion">
+                <div class="cerrar" onclick="cerrar()">
+                    &#x2715
+                </div>
+                <div class="info">
+                    <img src="img/1.png" alt="" id="img">
+                    <h2 id="modelo">NIKE MODEL 1</h2>
+                    <span class="cantidad" id="cantidad">en stock: 34</span>
+            
+                    <div class="fila d-flex flex-column align-items-start"> <!-- Cambiamos flex-direction a column -->
+                        <div class="size d-flex align-items-center mb-3"> <!-- Agregamos margen inferior para separar del botón -->
+                            <label for="cantidad-input" class="mr-2">INGRESE LA CANTIDAD:</label> <!-- Agregamos margen derecho para separar el label del input -->
+                            <input id="cantidad-input" class="ingreseCant form-control" type="number">
+                        </div>
+                        <div class="d-block"> <!-- Botón en una nueva línea -->
+                            <button class="btn btn-primary">SOLICITAR DONACION</button> <!-- Utilizamos la clase btn de Bootstrap -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+    <script src="inventarioScript.js"></script>
+</body>
+</html>

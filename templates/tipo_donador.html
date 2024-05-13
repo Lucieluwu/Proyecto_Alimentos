@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conexión de registros</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url(../static/img/lightgreen.png); /* Ruta de la imagen de fondo */
+            background-size: cover; /* Ajustar la imagen para cubrir todo el fondo */
+            background-position: center; /* Centrar la imagen de fondo */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Altura del viewport */
+        }
+
+        .container {
+            text-align: center; /* Centrar los elementos dentro del contenedor */
+        }
+        
+        .imageBotones {
+            display: inline-block; /* Mostrar en línea */
+            margin-right: 5px; /* Espacio entre las imágenes */
+            max-width: 400px; /* Ancho máximo de la imagen */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input class="imageBotones" type="image" src="../static/img/registrateOrganización.png" alt="Registrarse como organizacion" onclick="window.location.href='/donador_organizacion';">
+        <input class="imageBotones" type="image" src="../static/img/registratePersonaNatural.png" alt="Registrarse como persona individual" onclick="window.location.href='/donador_natural';">
+    </div>
+</body>
+</html>

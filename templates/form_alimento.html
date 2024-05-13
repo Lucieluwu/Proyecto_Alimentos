@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingrese alimento</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">DATOS DEL PRODUCTO</h1>
+        <form id="foodForm" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre del Producto:</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" autocomplete="off" required>
+            </div>
+            <div class="mb-3">
+                <label for="desc" class="form-label">Descripción:</label>
+                <input type="text" class="form-control" id="desc" name="desc">
+            </div>
+            <div class="mb-3">
+                <label for="cat" class="form-label">Categoría:</label>
+                <select class="form-select" id="cat" name="cat">
+                    <option disabled selected>Elija la categoria del producto</option>
+                    <option value="cereales">Cereales</option>
+                    <option value="enlatados">Enlatados</option>
+                    <option value="embutidos">Embutidos</option>
+                    <option value="congelados">Congelados</option>
+                    <option value="lacteos">Lácteos</option>
+                    <option value="otros">Otros</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="fecha_ven" class="form-label">Fecha de vencimiento:</label>
+                <input type="date" class="form-control" id="fecha_ven" name="fecha_ven">
+            </div>
+            <input type="hidden" name="peso" value="10">
+            <input type="hidden" name="estado" value="bueno">
+            <div class="mb-3">
+                <label for="stock" class="form-label">Stock:</label>
+                <input type="number" class="form-control" id="stock" name="stock" min="1">
+            </div>
+            <div class="mb-3">
+                <label for="tipo" class="form-label">Tipo de archivo:</label>
+                <input type="file" class="form-control" id="tipo" name="tipo" accept=".jpg,.png">
+            </div>
+            <div class="mb-3">
+                <div class="row">
+                    <div class="col d-flex justify-content-center"> <!-- Añade la clase d-flex y justify-content-center para alinear el contenido al centro -->
+                        <button type="submit" class="btn btn-primary w-100"><strong>AGREGAR A LA DONACION</strong></button> <!-- Agrega la clase w-100 para que el botón ocupe todo el ancho -->
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="container">
+        <div id="tempDataContainer" class="mt-3">
+            <h2 class="mb-3 text-center mx-auto">Productos que se Donaran:</h2>
+            <div class="table-responsive">
+                <table id="tempDataList" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Nombre</th>
+                            <th class="text-center">Descripción</th>
+                            <th class="text-center">Categoría</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Aquí se agregarán las filas de la tabla dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="mb-3">
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <button id="finishButton" class="btn btn-success w-100"><strong>FINALIZAR DONACION</strong></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const foodData = []; // Almacena temporalmente los datos de los alimentos
+    
+            const foodForm = document.getElementById("foodForm");
+            const tempDataList = document.getElementById("tempDataList");
+            const finishButton = document.getElementById("finishButton");
+    
+            foodForm.addEventListener("submit", function(event) {
+                event.preventDefault(); // Evita que el formulario se envíe normalmente
+    
+                // Captura los datos del formulario y los agrega al array de datos de alimentos
+                const formData = new FormData(foodForm);
+                const foodItem = {};
+                formData.forEach(function(value, key) {
+                    foodItem[key] = value;
+                });
+
+                delete foodItem['tipo'];
+    
+                // Obtener el nombre del archivo de imagen
+                const imagenInput = document.getElementById('tipo');
+                foodItem['imagen'] = imagenInput.files[0].name;
+    
+                foodData.push(foodItem);
+    
+                // Muestra los datos temporales en la tabla
+                renderTempData();
+    
+                // Limpia el formulario después de enviar los datos temporalmente
+                foodForm.reset();
+            });
+    
+            finishButton.addEventListener("click", function() {
+                // Convertir la lista foodData a formato JSON
+                const jsonData = JSON.stringify(foodData);
+    
+                // Ejemplo de cómo enviar los datos utilizando fetch
+                fetch('/prueba_envio', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: jsonData,
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Error al enviar los datos');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Después de guardar en la base de datos, puedes limpiar la matriz foodData
+                    foodData.length = 0;
+    
+                    // Limpiar la tabla de datos temporales
+                    tempDataList.querySelector("tbody").innerHTML = "";
+                    alert("Datos guardados en la base de datos");
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert("Ha ocurrido un error al guardar los datos en la base de datos");
+                });
+            });
+    
+    
+            function renderTempData() {
+                // Limpiar la tabla antes de volver a renderizar
+                tempDataList.querySelector("tbody").innerHTML = "";
+    
+                // Renderizar los datos temporales en la tabla
+                foodData.forEach(function(item, index) {
+                    const row = document.createElement("tr");
+                    row.classList.add("table-light"); // Añade el estilo de fila alternativo de Bootstrap
+                    row.innerHTML = `
+                        <td class="text-center">${item.nombre}</td>
+                        <td class="text-center">${item.desc}</td>
+                        <td class="text-center">${item.cat}</td>
+                        <td class="text-center">
+                            <button class="btn btn-danger btn-sm delete-button">Eliminar</button>
+                        </td>
+                    `;
+                    tempDataList.querySelector("tbody").appendChild(row);
+                });
+    
+                // Asignar el evento onclick de forma dinámica
+                assignDeleteEventListeners();
+            }
+    
+            function deleteTempData(index) {
+                // Elimina el elemento correspondiente del array de datos temporales
+                foodData.splice(index, 1);
+    
+                // Vuelve a renderizar la tabla para reflejar los cambios
+                renderTempData();
+            }
+    
+            // Asignar el evento onclick de forma dinámica
+            function assignDeleteEventListeners() {
+                const deleteButtons = document.querySelectorAll(".delete-button");
+                deleteButtons.forEach((button, index) => {
+                    button.addEventListener("click", () => {
+                        deleteTempData(index);
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

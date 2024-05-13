@@ -1,0 +1,154 @@
+{% extends 'dashboard_layout.html' %}
+
+{% block content %}
+<div class="main-body">
+    <h1 style="margin-left: 40%;">Administración General</h1>
+</div>
+<section id="content">
+    <!-- MAIN -->
+    <main>
+        <ul class="box-info">
+            <li>
+                <i class='bx bx-calendar-check'></i>
+                <span class="text">
+                    <h3>200</h3>
+                    <p>Donaciones</p>
+                </span>
+            </li>
+            <li>
+                <i class='bx bxs-group' ></i>
+                <span class="text">
+                    <h3>834</h3>
+                    <p>Visitantes</p>
+                </span>
+            </li>
+            <li>
+                <i class='bx bx-leaf' ></i>
+                <span class="text">
+                    <h3>543</h3>
+                    <p>Inventario</p>
+                </span>
+            </li>
+        </ul>
+
+
+        <div class="table-data">
+            <div class="order">
+                <div class="head">
+                    <h3>Estado de Donaciones</h3>
+                    <i class='bx bx-search' ></i>
+                    <i class='bx bx-filter' ></i>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Fecha</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for dona in donas %}
+                        <tr onclick=window.location.href="{{url_for('contenido', id=dona[1])}}" style="cursor: pointer;">
+                            <td>
+                                <img src="../static/dashboard/36.png">
+                                {{ dona[6] }}
+                            </td>
+                            <td>{{ dona[3] }}</td>
+                            <td><span class="status pending">{{ dona[5] }}</span></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="order">
+                <div class="head">
+                    <h3>Estado de Solicitudes</h3>
+                    <i class='bx bx-search' ></i>
+                    <i class='bx bx-filter' ></i>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Fecha</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for solicitud in solicitudes %}
+                        <tr onclick=window.location.href="{{url_for('contenido', id=solicitud[1])}}" style="cursor: pointer;">
+                            <td>
+                                <img src="../static/dashboard/36.png">
+                                {{ solicitud[6] }}
+                            </td>
+                            <td>{{ solicitud[3] }}</td>
+                            <td><span class="status pending">{{ solicitud[5] }}</span></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="todo">
+                <div class="head">
+                    <h3>Estado Actividades/Tareas</h3>
+                    <i class='bx bx-plus' ></i>
+                    <i class='bx bx-filter' ></i>
+                </div>
+                <ul class="todo-list">
+                    {% for tarea in tareas %}
+                    <li class="completed">
+                        <p>{{ tarea[1] }}</p>
+                        <p><strong>{{ tarea[3] }}</strong></p>
+                        <p>Fecha limite: {{ tarea[5] }}</p>
+                        <button type="button" id="btnAsignar" class="btn btn-primary newUser envAct btnAsignar" data-idact="{{ tarea[0] }}">ASIGNAR</button>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </main>
+    <!-- MAIN -->
+</section>
+<!-- Modal -->
+<div class="modal fade" id="modalTabla" tabindex="-1" role="dialog" aria-labelledby="modalTablaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTablaLabel">Voluntarios</h5>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Cod</th>
+                            <th>Nombre</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for vol in vols %}
+                        <tr>
+                            <td>{{ vol[0] }}</td>
+                            <td>{{ vol[1] }}</td>
+                            <td><button type="button" class="btn btn-primary newUser asignaVol" data-vol="{{ vol[0] }}" data-act="">ASIGNAR</button></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="btnCerrar">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %}
+
+{% block customjs %}
+    <script src="{{ url_for('static', filename='javascript/asignacionTarea.js') }}"></script>
+{% endblock %}

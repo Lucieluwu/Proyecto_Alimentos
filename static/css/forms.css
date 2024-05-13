@@ -1,0 +1,8 @@
+.form-control:focus {
+    border-color: #17d305; /* Cambia el color del borde */
+    box-shadow: 0 0 0 0.25rem rgba(24, 167, 6, 0.25); /* Cambia el color del resaltado */
+}
+.form-select:focus {
+    border-color: #17d305; /* Cambia el color del borde */
+    box-shadow: 0 0 0 0.25rem rgba(24, 167, 6, 0.25); /* Cambia el color del resaltado */
+}

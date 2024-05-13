@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;800&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans';
+}
+
+/* CSS */
+body {
+    max-height: 100vh; /* Limita la altura del cuerpo al 100% del viewport */
+    overflow-y: auto; /* Habilita el desplazamiento vertical si el contenido excede la altura del cuerpo */
+}
+
+.contenido{
+    max-width: 1200px;
+    width: 100%;
+    margin: 40px auto;
+    display: flex;
+}
+.mostrador{
+    width: 100%;
+    transition: .5s ease;
+}
+.mostrador .fila{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.mostrador .fila .item{
+    max-width: 210px;
+    padding: 30px;
+    height: 350px;
+    /*border: 2px solid red;*/
+    text-align: center;
+    margin: 0 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: .3s;
+}
+.mostrador .fila .item:hover{
+    background-color: #e6e6e6;
+}
+.mostrador .fila .item img{
+    width: 100%;
+    margin: 30px 0;
+}
+.mostrador .fila .item .descripcion{
+    color: #707070;
+    font-weight: bold;
+}
+.mostrador .fila .item .cantidad{
+    color: #335e32;
+    font-weight: bold;
+    font-size: 20pgreen;
+}
+
+.seleccion {
+    transition: .5s ease;
+    opacity: 0;
+    width: 0%;
+    max-width: 400px; /* Ajusta el ancho máximo según sea necesario */
+    min-height: 200px; /* Ajusta la altura mínima según sea necesario */
+    max-height: 90vh; /* Limita la altura máxima al 80% de la altura de la ventana */
+    border: 1px solid #ccc;
+    position: absolute; /* Cambia a posición absoluta */
+    top: 20px; /* Ajusta la distancia desde la parte superior de la ventana */
+    right: 50px; /* Ajusta la distancia desde el borde derecho de la ventana */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.cerrar {
+    position: absolute;
+    right: 10px; /* Ajusta la posición del botón cerrar */
+    top: 5px; /* Ajusta la posición del botón cerrar */
+    cursor: pointer;
+}
+
+.info {
+    padding: 10px;
+}
+
+#contenedorOpciones {
+    position: absolute;
+    top: 0; /* Puedes ajustar la posición vertical según sea necesario */
+    left: 0; /* Puedes ajustar la posición horizontal según sea necesario */
+    z-index: 1000; /* Ajusta el índice Z para asegurar que esté por encima de otros elementos */
+    background-color: rgba(255, 255, 255, 0.1); /* Color verde militar */
+    padding: 30px; /* Espaciado interior */
+    margin-top: 10%;
+}
+
+.clasificacion {
+    list-style: none; /* Elimina los puntos de la lista */
+    display: block; /* Alinea los elementos horizontalmente */
+    justify-content: center; /* Centra los elementos horizontalmente */
+    margin: 0; /* Elimina el margen */
+    padding: 0; /* Elimina el relleno */
+}
+
+.clasificacion .opciones {
+    margin: 10px 10px 5px 10px; /* Ajusta el margen entre las opciones */
+    border: 1px solid rgb(138, 152, 141); /* Borde negro */
+    background-color: #426B1F;
+}
+
+.clasificacion .opciones a {
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+    color: white; /* Letras blancas */
+    padding: 10px 10px 5px 10px; /* Espaciado interior */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+
+
+
+.info img{
+    display: block;
+    margin: 30px auto;
+    width: 50%;
+}
+.info h2{
+    font-weight: bold;
+    color: #707070;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.info p{
+    font-size: 14px;
+    color: #707070;
+    margin-bottom: 10px;
+}
+.info .cantidad{
+    font-size: 20px;
+    font-weight:lighter;
+    color: rgb(52, 86, 52);
+    margin-bottom: 10px;
+    display: block;
+}
+.info .fila{
+    display: flex;
+    align-items: flex-end;
+}
+.info .fila label{
+    display: block;
+    margin-bottom: 10px;
+}
+.info .fila select{
+    width: 100px;
+    font-size: 18px;
+    padding: 6px;
+    margin-right: 30px;
+}
+.info .fila button{
+    height: 40px;
+    border: none;
+    padding: 0 10px;
+    color: #fff;
+    background-color: rgb(52, 86, 52);
+}
+
+/* Agrega la regla de estilo para la fuente 'Inter' */ 
+@font-face { 
+    font-family: 'Inter'; 
+    src: url('../font/fonts/Inter-Regular.ttf'); 
+    font-weight: normal; 
+    font-style: normal; 
+} 
+ 
+/* Aplica la fuente 'Inter' a los elementos que desees */ 
+body, .navbar-brand, .nav-link, .btn { 
+    font-family: 'Inter', sans-serif; 
+} 
+
+.ingreseCant{
+    width: 200px;
+    display: inline-block;
+}
+/* Tus estilos existentes */ 
+.navbar-brand { 
+    color: black; 
+} 
+.nav-link { 
+    color: black !important; 
+} 
+.btn-primary { 
+    background-color: #426B1F !important; 
+    color: white !important; 
+    border-color: #426B1F !important; 
+} 
+.logo-container { 
+    flex-grow: 1; 
+} 
+.nav { 
+    margin-right: 10px; /* Ajusta el margen derecho según lo desees */ 
+} 
+@media (min-width: 768px) { 
+    .header-content { 
+        display: flex; 
+        align-items: center; 
+    } 
+}

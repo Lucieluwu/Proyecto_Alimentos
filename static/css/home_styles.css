@@ -1,0 +1,37 @@
+ /* Agrega la regla de estilo para la fuente 'Inter' */
+ @font-face {
+    font-family: 'Inter';
+    src: url('../font/fonts/Inter-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Aplica la fuente 'Inter' a los elementos que desees */
+body, .navbar-brand, .nav-link, .btn {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Tus estilos existentes */
+.navbar-brand {
+    color: black;
+}
+.nav-link {
+    color: black !important;
+}
+.btn-primary {
+    background-color: #426B1F !important;
+    color: white !important;
+    border-color: #426B1F !important;
+}
+.logo-container {
+    flex-grow: 1;
+}
+.nav {
+    margin-right: 10px; /* Ajusta el margen derecho según lo desees */
+}
+@media (min-width: 768px) {
+    .header-content {
+        display: flex;
+        align-items: center;
+    }
+}

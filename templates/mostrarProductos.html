@@ -1,0 +1,57 @@
+{% extends 'index.html' %}
+
+{% block customCSS %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/inventarioEstilos.css') }}">
+{% endblock %}
+
+{% block content %}
+        <!--HEADEEEEEEEEEER-->
+    
+
+    <section class="contenido">
+            <div class="mostrador" id="mostrador">
+
+
+
+                <section id="lacteos">
+                    <div class="contenedor-imgCategoria">
+                        <img src="../static/img/seccionLacteos4.png" alt="">
+                    </div>
+
+                    <!--           L  A   C   T   E   O   S     -->
+                <div class="fila">
+                    {% for index in indices %}
+                        {% if index % 4 == 0 %}
+                            </div><div class="fila">
+                        {% endif %}
+                        <div class="item" onclick="cargar(this)" data-stock="{{ alimentos[index][2] }}" data-id="{{ alimentos[index][0] }}">
+                            <div class="contenedor-foto">
+                                <img src="{{ url_for('static', filename='img/'+ alimentos[index][3]) }}" alt="">
+                            </div>
+                            <p class="descripcion">{{ alimentos[index][1] }}</p>
+                            <span class="cantidad">en stock: {{ alimentos[index][2] }}</span>
+                        </div>
+                    {% endfor %}
+                </div>
+            </section>
+            
+            <div style="text-align: center; margin-bottom: 50px;">
+                <button class="btn btn-primary" onclick=window.location.href="{{url_for('user_dashboard')}}">VOLVER</button>
+            </div>
+            
+            </div>
+            <!-- CONTENEDOR DEL ITEM SELECCIONADO -->
+            <div class="seleccion" id="seleccion">
+                <div class="cerrar" onclick="cerrar()">
+                    &#x2715
+                </div>
+                <div class="info">
+                    <img src="" alt="" id="img">
+                    <h2 id="modelo">NIKE MODEL 1</h2>
+                    <span class="cantidad" id="cantidad">EN STOCK:</span>
+                </div>
+            </div>
+            
+
+    <script src="{{ url_for('static', filename='javascript/inventarioScript.js') }}"></script>
+{% endblock %}

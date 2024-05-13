@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/form_styles.css">
+    <title>Datos de persona</title>
+</head>
+<body>
+    <p class="titulo">INGRESAR LOS DATOS DE SU PERSONA</p>
+    <p>TOMAR EN CUENTA: Si usted quiere registrar una compañía, pueblo o empresa, ingrese los datos de su respectivo encargado o persona con autoridad.</p>
+    <form class="container" action="guardar_persona" method="post">
+        <div class="row">
+            <div class="column">
+                <label for="ci">Carnet</label>
+                <input type="number" name="ci" id="ci" required>
+            </div>
+            <div class="column">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+            <div class="column">
+                <label for="apaterno">Apellido Paterno</label>
+                <input type="text" id="apaterno" name="apepaterno" required>
+            </div>
+            <div class="column">
+                <label for="amaterno">Apellido Materno</label required>
+                <input type="text" id="amaterno" name="apematerno">
+            </div>
+            <div class="column">
+                <label for="celular">Celular</label>
+                <input type="number" id="celular" name="cel" required>
+            </div>
+            <div class="column">
+                <label for="fecha">Nacimiento</label>
+                <input type="date" id="fecha" name="naci" required>
+            </div>
+            <div class="column">
+                <label for="direccion">Dirección</label>
+                <input type="text" id="direccion" name="direccion">
+            </div>
+            <div class="column">
+                <label>Sexo</label>
+                <div class="gender-group">
+                    <input type="radio" name="sexo" id="F" value="F" class="gender-input">
+                    <label class="gender-label" for="F">Femenino</label>
+                    <input type="radio" name="sexo" id="M" value="M" class="gender-input">
+                    <label class="gender-label" for="M">Masculino</label>
+                </div>
+            </div>
+        </div>
+        <div class="button-container">
+            <button type="submit">Siguiente</button>
+        </div>
+    </form>
+</body>
+</html>

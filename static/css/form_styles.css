@@ -1,0 +1,81 @@
+@font-face {
+    font-family: 'Inter';
+    src: url('../font/fonts/Inter-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Newsreader_14pt-Light';
+    src: url('../font/fonts/Newsreader_14pt-Medium.ttf');
+}
+
+body, button, input, label, p {
+    font-family: 'Inter', sans-serif; /* Establecer Inter para todos los textos */
+}
+
+.titulo {
+    font-family: 'Newsreader_14pt-Light', sans-serif; /* Establecer Newsreader_14pt-Medium para h1 */
+    font-size: 40px;
+    color: #1A871F;
+    text-align: center;
+    margin-top: 2%; /* Ajusta el espacio entre h1 y h3 */
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.container {
+    margin: 3% auto 30px; /* Reduje el margen superior para acercar el contenedor */
+    width: 50%;
+    text-align: center;
+    background-color: #E6E6E6; /* Color crema */
+    padding: 50px;
+    border-radius: 20px;
+    position: relative; /* Añadido */
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.column {
+    width: calc(50% - 5px); /* 50% menos el espacio entre columnas */
+    margin-bottom: 10px;
+    text-align: left;
+}
+.column:nth-child(odd) {
+    margin-right: 10px; /* Espacio entre las dos primeras columnas */
+}
+.column label {
+    display: block;
+    margin-bottom: 5px;
+}
+.gender-group {
+    display: flex;
+    align-items: center;
+}
+.gender-label {
+    margin-right: 20px; /* Espacio entre el radio button y el texto */
+}
+.gender-input {
+    margin-right: 15px; /* Espacio entre los radio buttons */
+    margin-top: -7px;
+}
+p {
+    font-size: 17px; /* Ajusta según sea necesario */
+    margin-top: 5%; /* Ajusta el espacio entre h1 y h3 */
+    margin-left: 20%;
+    margin-right: 20%;
+}
+button {
+    background-color: #426B1F;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 10px; /* Ajustado para acercar el botón al contenedor */
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+	<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css" type="text/css">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/mapa.css') }}">
+
+	<title>Ubicaciones</title>
+
+</head>
+<body>
+	<div id='map'></div>
+
+	<nav id="listing-group" class="listing-group">
+		<input type="checkbox" id="scrollZoom" checked="checked">
+		<label for="scrollZoom">Scroll Zoom</label>
+		<input type="checkbox" id="boxZoom" checked="checked">
+		<label for="boxZoom">Box zoom</label>
+		<input type="checkbox" id="dragRotate" checked="checked">
+		<label for="dragRotate">Arrastrar y rotar</label>
+		<input type="checkbox" id="dragPan" checked="checked">
+		<label for="dragPan">Arrastrar</label>
+		<input type="checkbox" id="keyboard" checked="checked">
+		<label for="keyboard">Teclado</label>
+		<input type="checkbox" id="doubleClickZoom" checked="checked">
+		<label for="doubleClickZoom">Doble click zoom</label>
+		<input type="checkbox" id="touchZoomRotate" checked="checked">
+		<label for="touchZoomRotate">Touch zoom rotacion</label>
+	</nav>
+
+
+	<script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+	<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+	<script>
+		mapboxgl.accessToken = 'pk.eyJ1IjoibWp2YWxlbnp1ZWxhIiwiYSI6ImNrb2Fmdm9zZDBpM28ybnFtYTQ2Z2MwMnYifQ.ZY3jTw0-6tjUSOOJXJHsdw'
+
+		var map = new mapboxgl.Map({
+			container: 'map',
+			style: 'mapbox://styles/mapbox/streets-v11',
+			center: [-68.12999,-16.5045],
+			zoom: 17
+		});
+
+		document
+		.getElementById('listing-group')
+		.addEventListener('change', function(e)
+		{
+		var handler = e.target.id;
+		if(e.target.checked){
+			map[handler].enable();
+		} else {
+			map[handler].disable();
+		}
+		});
+
+		var customData = {
+			'features': [
+			{
+				'type': 'Feature',
+				'properties': {
+					'title': 'Sucursal Donappetite'
+				},
+			'geometry': {//-16.4952478,-68.1740519
+				'coordinates': [-68.1740519,-16.4952478],
+				'type': 'Point'
+				}
+			},
+			{
+				'type': 'Feature',
+				'properties': {
+					'title': 'Lugar de recojo ID:1'
+				},
+			'geometry': {//-16.4963375,-68.1604263,
+				'coordinates': [-68.1604263,-16.4963375],
+				'type': 'Point'
+				}
+			},
+			{
+				'type': 'Feature',
+				'properties': {
+					'title': 'Lugar de recojo ID:2'
+				},
+			'geometry': {//-16.4977674,-68.1625721
+				'coordinates': [-68.1625721,-16.4977674],
+				'type': 'Point'
+				}
+			},
+			{
+				'type': 'Feature',
+				'properties': {
+					'title': 'Lugar de recojo ID:3'
+				},
+			'geometry': {//16.4985985,-68.1445197
+				'coordinates': [-68.4985985,-16.4985985],
+				'type': 'Point'
+				}
+			},
+			{
+				'type': 'Feature',
+				'properties': {
+					'title': 'Lugar de entrega ID:1'
+				},
+			'geometry': {//16.5104911,-68.1370837
+				'coordinates': [-68.1370837,-16.5104911],
+				'type': 'Point'
+				}
+			}
+			],
+			
+			'type': 'FeatureCollection'
+		};
+		
+		function forwardGeocoder(query) {
+			var matchingFeatures = [];
+			for (var i = 0; i < customData.features.length; i++) {
+				var feature = customData.features[i];
+				// Handle queries with different capitalization
+				// than the source data by calling toLowerCase().
+				if (
+					feature.properties.title
+						.toLowerCase()
+						.search(query.toLowerCase()) !== -1
+				) {
+					// Add a tree emoji as a prefix for custom
+					// data results using carmen geojson format:
+					// https://github.com/mapbox/carmen/blob/master/carmen-geojson.md
+					if (feature.properties.title.includes("Lugar de recojo"))
+					{
+						feature['place_name'] = '📦 ' + feature.properties.title;
+					}
+					else
+					{
+						if (feature.properties.title.includes("Lugar de entrega"))
+						{
+						feature['place_name'] = '🚚 ' + feature.properties.title;
+						}
+						else{
+							feature['place_name'] = '🥦 ' + feature.properties.title;
+						}
+					}
+					feature['center'] = feature.geometry.coordinates;
+					feature['place_type'] = ['park'];
+					matchingFeatures.push(feature);
+					}
+			}
+			return matchingFeatures;
+		}
+		
+		// Add the control to the map.
+		map.addControl(
+			new MapboxGeocoder({
+				accessToken: mapboxgl.accessToken,
+				localGeocoder: forwardGeocoder,
+				zoom: 16,
+				placeholder: 'Ingrese un lugar a buscar',
+				mapboxgl: mapboxgl
+			})
+		);
+
+	</script>
+	
+</body>
+</html>
